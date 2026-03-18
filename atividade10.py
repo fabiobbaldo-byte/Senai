@@ -1,0 +1,23 @@
+estoque = {}
+print ("bem vindo ao sistema de gestao desenvolvido por felipe")
+while True:
+    operacao = input (" saideseja registrar a estrada e saida de produto? (digite 'entrada' ou 'saida') ou sair "). lower()
+    if operacao == 'sair':
+        break
+    produto = input(" nome do produto: "). strip()
+    qtd = int(input(" quantidade: "))
+    if operacao not in ['entrada', 'saida']:
+        print(" operacao inválida. ")
+        continue
+
+    if operacao == 'entrada':
+        estoque[produto] = estoque.get(produto, 0) + qtd
+    elif operacao == 'saída':
+        if estoque.get(produto, 0) >= qtd:
+            estoque[produto] -= qtd
+        else:
+            print(" Erro:produto inexistente ou estoque insuficiente ")
+
+print("/n ---Estoque Final ---")
+for p, q in estoque.items():
+    print(f"{p}: {q}")
